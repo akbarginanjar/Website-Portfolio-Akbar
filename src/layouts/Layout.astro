@@ -1,0 +1,46 @@
+---
+import "@/styles/globals.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Akbar Ginanjar — Web & Mobile Developer",
+  description = "Akbar Ginanjar — Web Developer & Mobile Developer building modern digital products with Flutter, Laravel, Node.js and AI.",
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Inter:wght@300..600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- grain / noise overlay -->
+  <div class="noise" aria-hidden="true"></div>
+
+  <!-- scroll progress -->
+  <div class="scroll-progress" aria-hidden="true"><span id="scrollProgressBar"></span></div>
+
+  <!-- custom cursor -->
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"><span id="cursorLabel"></span></div>
+  </div>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <slot />
+
+  <script src="../scripts/main.js"></script>
+</body>
+</html>

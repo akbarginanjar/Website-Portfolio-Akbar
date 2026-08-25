@@ -1,0 +1,28 @@
+---
+const stack = [
+  { num: "01", name: "Flutter", tag: "Mobile" },
+  { num: "02", name: "Laravel", tag: "Backend" },
+  { num: "03", name: "Node.js", tag: "Backend" },
+  { num: "04", name: "Vue / Nuxt", tag: "Frontend" },
+  { num: "05", name: "React / Astro", tag: "Frontend" },
+  { num: "06", name: "TypeScript", tag: "Language" },
+  { num: "07", name: "PostgreSQL / MySQL", tag: "Data" },
+  { num: "08", name: "AI Integration", tag: "Intelligence" },
+  { num: "09", name: "Three.js / GSAP", tag: "Motion" },
+];
+---
+<section class="stack" id="stack">
+  <div class="section-head">
+    <span class="section-eyebrow">02</span>
+    <h2 class="section-title" data-split data-i18n="stack.title" data-i18n-direct>Technologies</h2>
+  </div>
+  <ul class="stack-list" id="stackList">
+    {stack.map((item) => (
+      <li class="stack-item" data-index={item.num}>
+        <span class="stack-num">{item.num}</span>
+        <span class="stack-name">{item.name}</span>
+        <span class="stack-tag">{item.tag}</span>
+      </li>
+    ))}
+  </ul>
+</section>

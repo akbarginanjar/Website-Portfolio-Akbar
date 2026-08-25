@@ -1,0 +1,84 @@
+---
+const projects = [
+  {
+    index: "01",
+    tags: "AI · WEB · MOBILE",
+    label: "MATRIAL",
+    tint: "#5B8CFF",
+    title: "Matrial",
+    desc: "AI-powered material marketplace and intelligent construction analysis platform.",
+    projectIndex: "0",
+  },
+  {
+    index: "02",
+    tags: "MOBILE · COMMERCE",
+    label: "BALANJA",
+    tint: "#7A6BFF",
+    title: "Balanja Express",
+    desc: "Mobile commerce ecosystem connecting customers and drivers in real time.",
+    projectIndex: "1",
+  },
+  {
+    index: "03",
+    tags: "WEB · GOVERNMENT",
+    label: "BPBD JABAR",
+    tint: "#4FA8FF",
+    title: "BPBD Jawa Barat",
+    desc: "Digital platform for regional disaster management and public coordination.",
+    projectIndex: "2",
+  },
+  {
+    index: "04",
+    tags: "WEB · PUBLIC INFO",
+    label: "DAMKAR",
+    tint: "#5B8CFF",
+    title: "Damkar Jawa Barat",
+    desc: "Emergency response and public information platform for the fire & rescue service.",
+    projectIndex: "3",
+  },
+  {
+    index: "05",
+    tags: "MOBILE · DISASTER MGMT",
+    label: "BARATA",
+    tint: "#6C9CFF",
+    title: "Barata",
+    desc: "Mobile application supporting field teams during disaster response operations.",
+    projectIndex: "4",
+  },
+  {
+    index: "06",
+    tags: "WEB · EDUCATION",
+    label: "E-COURSE",
+    tint: "#5B8CFF",
+    title: "E-Course",
+    desc: "Digital learning platform for structured, self-paced online courses.",
+    projectIndex: "5",
+  },
+];
+---
+<section class="work" id="work">
+  <div class="section-head">
+    <span class="section-eyebrow">03</span>
+    <h2 class="section-title" data-split data-i18n="work.title" data-i18n-direct>Selected Work</h2>
+  </div>
+
+  <div class="project-list" id="projectList">
+    {projects.map((p) => (
+      <article class="project" data-project={p.projectIndex}>
+        <div class="project-top">
+          <span class="project-index">{p.index}</span>
+          <span class="project-tags">{p.tags}</span>
+        </div>
+        <div class="project-visual">
+          <div class="project-visual-inner" style={`--tint:${p.tint};`}>
+            <span class="project-visual-label">{p.label}</span>
+          </div>
+        </div>
+        <div class="project-info">
+          <h3 class="project-title">{p.title}</h3>
+          <p class="project-desc">{p.desc}</p>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>

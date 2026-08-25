@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Akbar Ginanjar - Web &amp; Mobile Developer</title>
+<meta name="description" content="Akbar Ginanjar — Web Developer &amp; Mobile Developer building modern digital products with Flutter, Laravel, Node.js and AI." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Inter:wght@300..600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="./css/globals.css">
+<link rel="stylesheet" href="./css/typography.css">
+<link rel="stylesheet" href="./css/animations.css">
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "gsap": "https://cdn.jsdelivr.net/npm/gsap@3.12.5/index.js",
+    "gsap/ScrollTrigger": "https://cdn.jsdelivr.net/npm/gsap@3.12.5/ScrollTrigger.js",
+    "lenis": "https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.mjs"
+  }
+}
+</script>
+</head>
+<body>
+
+<!-- grain / noise overlay -->
+<div class="noise" aria-hidden="true"></div>
+
+<!-- scroll progress -->
+<div class="scroll-progress" aria-hidden="true"><span id="scrollProgressBar"></span></div>
+
+<!-- custom cursor -->
+<div class="cursor" id="cursor" aria-hidden="true">
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"><span id="cursorLabel"></span></div>
+</div>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- NAV -->
+<header class="nav" id="siteNav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-logo" data-cursor="text" data-cursor-text="TOP">AKBAR GINANJAR</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#work" data-link>WORK</a>
+      <a href="#about" data-link>ABOUT</a>
+      <a href="#services" data-link>SERVICES</a>
+      <a href="#contact" data-link>CONTACT</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+      <span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-indicator" id="navIndicator" aria-hidden="true"></div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <nav aria-label="Mobile">
+    <a href="#work" data-link>Work</a>
+    <a href="#about" data-link>About</a>
+    <a href="#services" data-link>Services</a>
+    <a href="#contact" data-link>Contact</a>
+  </nav>
+  <div class="mobile-menu-foot">
+    <span>akbarginanjar.dev@gmail.com</span>
+  </div>
+</div>
+
+<main id="main">
+
+<!-- HERO -->
+  <section class="hero" id="top">
+    <canvas id="heroCanvas" class="hero-canvas" aria-hidden="true"></canvas>
+    <div class="hero-inner">
+      <div class="hero-content">
+        
+        <h1 class="hero-title">
+          <span class="line" data-hero-line>AKBAR</span>
+          <span class="line" data-hero-line>GINANJAR</span>
+        </h1>
+        <div class="hero-bottom">
+          <p class="hero-sub" data-reveal>
+            Web & Mobile Developer crafting modern digital products with
+            Flutter, Laravel, Node.js — and the intelligence to make them think.
+          </p>
+          <div class="hero-cta" data-reveal>
+            <a href="#work" class="btn btn-primary" data-link data-cursor="text" data-cursor-text="VIEW">
+              <span>View Selected Work</span>
+            </a>
+            <a href="#contact" class="btn btn-ghost" data-link>Let's Talk</a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-photo hero-photo-standalone" data-reveal>
+        <img src="./assets/akbar.png" alt="Akbar Ginanjar" class="hero-full-portrait" />
+      </div>
+    </div>
+    <div class="hero-status" data-reveal>
+      <span class="status-dot"></span>
+      Available for selected projects
+    </div>
+    <div class="hero-scroll-cue" aria-hidden="true">
+      <span>SCROLL</span>
+      <div class="scroll-cue-line"><i></i></div>
+    </div>
+  </section>
+
+  <!-- STATEMENT -->
+  <section class="statement" aria-label="Statement">
+    <p class="statement-text" id="statementText">
+      I build digital products that combine thoughtful design, robust engineering
+      and intelligent technology.
+    </p>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="section-head">
+      <span class="section-eyebrow">01</span>
+      <h2 class="section-title" data-split>About</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-copy">
+        <p data-reveal>
+          I'm Akbar Ginanjar, a developer focused on building modern web and
+          mobile applications. I work across frontend, backend and mobile
+          ecosystems, and spend increasing amounts of time exploring how AI
+          can make digital products more intelligent — not louder, just
+          smarter.
+        </p>
+        <p data-reveal>
+          My work spans government platforms, mobile commerce, and disaster
+          response systems — projects where reliability and clarity matter
+          as much as polish.
+        </p>
+      </div>
+      <ul class="about-list">
+        <li data-reveal><span>Web Development</span></li>
+        <li data-reveal><span>Mobile Development</span></li>
+        <li data-reveal><span>Backend Engineering</span></li>
+        <li data-reveal><span>AI Integration</span></li>
+        <li data-reveal><span>Intelligent Applications</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- TECH STACK -->
+  <section class="stack" id="stack">
+    <div class="section-head">
+      <span class="section-eyebrow">02</span>
+      <h2 class="section-title" data-split>Technologies</h2>
+    </div>
+    <ul class="stack-list" id="stackList">
+      <li class="stack-item" data-index="01"><span class="stack-num">01</span><span class="stack-name">Flutter</span><span class="stack-tag">Mobile</span></li>
+      <li class="stack-item" data-index="02"><span class="stack-num">02</span><span class="stack-name">Laravel</span><span class="stack-tag">Backend</span></li>
+      <li class="stack-item" data-index="03"><span class="stack-num">03</span><span class="stack-name">Node.js</span><span class="stack-tag">Backend</span></li>
+      <li class="stack-item" data-index="04"><span class="stack-num">04</span><span class="stack-name">Vue / Nuxt</span><span class="stack-tag">Frontend</span></li>
+      <li class="stack-item" data-index="05"><span class="stack-num">05</span><span class="stack-name">React</span><span class="stack-tag">Frontend</span></li>
+      <li class="stack-item" data-index="06"><span class="stack-num">06</span><span class="stack-name">TypeScript</span><span class="stack-tag">Language</span></li>
+      <li class="stack-item" data-index="07"><span class="stack-num">07</span><span class="stack-name">PostgreSQL / MySQL</span><span class="stack-tag">Data</span></li>
+      <li class="stack-item" data-index="08"><span class="stack-num">08</span><span class="stack-name">AI Integration</span><span class="stack-tag">Intelligence</span></li>
+      <li class="stack-item" data-index="09"><span class="stack-num">09</span><span class="stack-name">Three.js / GSAP</span><span class="stack-tag">Motion</span></li>
+    </ul>
+  </section>
+
+  <!-- WORK -->
+  <section class="work" id="work">
+    <div class="section-head">
+      <span class="section-eyebrow">03</span>
+      <h2 class="section-title" data-split>Selected Work</h2>
+    </div>
+
+    <div class="project-list" id="projectList">
+
+      <article class="project" data-project="0">
+        <div class="project-top">
+          <span class="project-index">01</span>
+          <span class="project-tags">AI · WEB · MOBILE</span>
+        </div>
+        <div class="project-visual">
+          <div class="project-visual-inner" style="--tint:#5B8CFF;">
+            <span class="project-visual-label">MATRIAL</span>
+          </div>
+        </div>
+        <div class="project-info">
+          <h3 class="project-title">Matrial</h3>
+          <p class="project-desc">AI-powered material marketplace and intelligent construction analysis platform.</p>
+        </div>
+      </article>
+
+      <article class="project" data-project="1">
+        <div class="project-top">
+          <span class="project-index">02</span>
+          <span class="project-tags">MOBILE · COMMERCE</span>
+        </div>
+        <div class="project-visual">
+          <div class="project-visual-inner" style="--tint:#7A6BFF;">
+            <span class="project-visual-label">BALANJA</span>
+          </div>
+        </div>
+        <div class="project-info">
+          <h3 class="project-title">Balanja Express</h3>
+          <p class="project-desc">Mobile commerce ecosystem connecting customers and drivers in real time.</p>
+        </div>
+      </article>
+
+      <article class="project" data-project="2">
+        <div class="project-top">
+          <span class="project-index">03</span>
+          <span class="project-tags">WEB · GOVERNMENT</span>
+        </div>
+        <div class="project-visual">
+          <div class="project-visual-inner" style="--tint:#4FA8FF;">
+            <span class="project-visual-label">BPBD JABAR</span>
+          </div>
+        </div>
+        <div class="project-info">
+          <h3 class="project-title">BPBD Jawa Barat</h3>
+          <p class="project-desc">Digital platform for regional disaster management and public coordination.</p>
+        </div>
+      </article>
+
+      <article class="project" data-project="3">
+        <div class="project-top">
+          <span class="project-index">04</span>
+          <span class="project-tags">WEB · PUBLIC INFO</span>
+        </div>
+        <div class="project-visual">
+          <div class="project-visual-inner" style="--tint:#5B8CFF;">
+            <span class="project-visual-label">DAMKAR</span>
+          </div>
+        </div>
+        <div class="project-info">
+          <h3 class="project-title">Damkar Jawa Barat</h3>
+          <p class="project-desc">Emergency response and public information platform for the fire &amp; rescue service.</p>
+        </div>
+      </article>
+
+      <article class="project" data-project="4">
+        <div class="project-top">
+          <span class="project-index">05</span>
+          <span class="project-tags">MOBILE · DISASTER MGMT</span>
+        </div>
+        <div class="project-visual">
+          <div class="project-visual-inner" style="--tint:#6C9CFF;">
+            <span class="project-visual-label">BARATA</span>
+          </div>
+        </div>
+        <div class="project-info">
+          <h3 class="project-title">Barata</h3>
+          <p class="project-desc">Mobile application supporting field teams during disaster response operations.</p>
+        </div>
+      </article>
+
+      <article class="project" data-project="5">
+        <div class="project-top">
+          <span class="project-index">06</span>
+          <span class="project-tags">WEB · EDUCATION</span>
+        </div>
+        <div class="project-visual">
+          <div class="project-visual-inner" style="--tint:#5B8CFF;">
+            <span class="project-visual-label">E-COURSE</span>
+          </div>
+        </div>
+        <div class="project-info">
+          <h3 class="project-title">E-Course</h3>
+          <p class="project-desc">Digital learning platform for structured, self-paced online courses.</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="experience" id="experience">
+    <div class="section-head">
+      <span class="section-eyebrow">04</span>
+      <h2 class="section-title" data-split>Experience</h2>
+    </div>
+    <div class="timeline">
+      <div class="timeline-line" aria-hidden="true"><i id="timelineFill"></i></div>
+      <div class="timeline-item" data-reveal>
+        <span class="timeline-date">2024 — Present</span>
+        <div class="timeline-body">
+          <h3>Web &amp; Mobile Developer</h3>
+          <p>PT Icommits</p>
+        </div>
+      </div>
+      <div class="timeline-item" data-reveal>
+        <span class="timeline-date">2023 — 2024</span>
+        <div class="timeline-body">
+          <h3>Frontend &amp; Mobile Development</h3>
+          <p>Various digital projects</p>
+        </div>
+      </div>
+      <div class="timeline-item" data-reveal>
+        <span class="timeline-date">2022 — 2023</span>
+        <div class="timeline-body">
+          <h3>Junior Web Developer</h3>
+          <p>Freelance &amp; contract work</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section-head">
+      <span class="section-eyebrow">05</span>
+      <h2 class="section-title" data-split>What I Do</h2>
+    </div>
+    <ul class="services-list">
+      <li class="service-item"><span class="service-num">01</span><span class="service-name">Web Development</span></li>
+      <li class="service-item"><span class="service-num">02</span><span class="service-name">Mobile Development</span></li>
+      <li class="service-item"><span class="service-num">03</span><span class="service-name">Backend Development</span></li>
+      <li class="service-item"><span class="service-num">04</span><span class="service-name">AI Integration</span></li>
+      <li class="service-item"><span class="service-num">05</span><span class="service-name">Intelligent Application Development</span></li>
+      <li class="service-item"><span class="service-num">06</span><span class="service-name">Interactive Web Experiences</span></li>
+    </ul>
+  </section>
+
+  <!-- AI SECTION -->
+  <section class="ai-section" id="ai">
+    <canvas id="aiCanvas" class="ai-canvas" aria-hidden="true"></canvas>
+    <div class="ai-content">
+      <div class="section-head">
+        <span class="section-eyebrow">06</span>
+        <h2 class="section-title" data-split>Building With AI</h2>
+      </div>
+      <p class="ai-desc" data-reveal>
+        I explore how artificial intelligence can transform ordinary
+        applications into intelligent experiences — systems that read
+        context, not just input.
+      </p>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track" id="marqueeTrack">
+      <span>WEB DEVELOPMENT</span><span>·</span>
+      <span>MOBILE DEVELOPMENT</span><span>·</span>
+      <span>FLUTTER</span><span>·</span>
+      <span>LARAVEL</span><span>·</span>
+      <span>NODE.JS</span><span>·</span>
+      <span>AI INTEGRATION</span><span>·</span>
+      <span>CREATIVE TECHNOLOGY</span><span>·</span>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact-inner">
+      <h2 class="contact-title" data-split>LET'S BUILD<br>SOMETHING<br>GREAT.</h2>
+      <p class="contact-sub" data-reveal>
+        Have an idea, product or project in mind? Let's turn it into
+        something meaningful.
+      </p>
+      <a href="mailto:akbarginanjar.dev@gmail.com" class="btn btn-primary btn-large" data-reveal data-cursor="text" data-cursor-text="EMAIL">
+        Start a Conversation
+      </a>
+      <div class="contact-links" data-reveal>
+        <a href="mailto:akbarginanjar.dev@gmail.com">Email</a>
+        <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <span class="footer-name">AKBAR GINANJAR</span>
+  <span class="footer-mid">Web Developer · Mobile Developer · AI</span>
+  <span class="footer-year">© 2026</span>
+</footer>
+
+<!-- PROJECT DETAIL OVERLAY -->
+<div class="project-overlay" id="projectOverlay" aria-hidden="true">
+  <button class="project-overlay-close" id="overlayClose" aria-label="Close project detail">Close</button>
+  <div class="project-overlay-inner">
+    <div class="overlay-visual" id="overlayVisual"></div>
+    <div class="overlay-content">
+      <span class="overlay-index" id="overlayIndex"></span>
+      <h3 class="overlay-title" id="overlayTitle"></h3>
+      <p class="overlay-desc" id="overlayDesc"></p>
+      <div class="overlay-meta" id="overlayMeta"></div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="./js/main.js"></script>
+</body>
+</html>
