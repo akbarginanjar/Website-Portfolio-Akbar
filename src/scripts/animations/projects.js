@@ -53,7 +53,6 @@ export function initProjectOverlay(gsap, lenis) {
   const overlay = document.getElementById("projectOverlay");
   const closeBtn = document.getElementById("overlayClose");
   const visual = document.getElementById("overlayVisual");
-  const indexEl = document.getElementById("overlayIndex");
   const titleEl = document.getElementById("overlayTitle");
   const descEl = document.getElementById("overlayDesc");
   const metaEl = document.getElementById("overlayMeta");
@@ -65,7 +64,6 @@ export function initProjectOverlay(gsap, lenis) {
     if (!data || isOpen) return;
     isOpen = true;
 
-    indexEl.textContent = data.index;
     titleEl.textContent = data.title;
     descEl.textContent = data.desc;
     metaEl.innerHTML = data.meta.map((m) => `<span>${m}</span>`).join("");
