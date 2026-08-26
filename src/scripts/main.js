@@ -12,6 +12,7 @@ import {
   initTimelineFill,
   initScrollProgress,
   initParallaxProjects,
+  initOverlapAbout,
 } from "./animations/reveal.js";
 import { initProjectOverlay } from "./animations/projects.js";
 import { initHeroTilt } from "./animations/hero-tilt.js";
@@ -32,6 +33,7 @@ initHeroEntrance(gsap);
 initSectionTitles(gsap, ScrollTrigger);
 initGenericReveals(gsap, ScrollTrigger);
 initStatementReveal(gsap, ScrollTrigger);
+initOverlapAbout(ScrollTrigger);
 initTimelineFill(gsap, ScrollTrigger);
 initScrollProgress(gsap, ScrollTrigger);
 initParallaxProjects(gsap, ScrollTrigger);

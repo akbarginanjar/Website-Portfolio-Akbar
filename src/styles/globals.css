@@ -395,6 +395,25 @@ button:focus-visible {
   overflow: hidden;
 }
 
+.hero-socials {
+  display: flex;
+  gap: 20px;
+  margin-top: 28px;
+}
+.hero-socials a {
+  color: var(--text-dim);
+  transition: color 0.3s, transform 0.3s;
+}
+.hero-socials a:hover {
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+.hero-socials svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
 .hero-bottom {
   margin-top: 48px;
   display: flex;
@@ -525,7 +544,7 @@ button:focus-visible {
   border: 1px solid rgba(255, 255, 255, 0.3);
   color: white;
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: background 0.2s ease, transform 0.3s var(--ease-out-2);
   transform: translateZ(60px);
   flex-shrink: 0;
 }
@@ -547,7 +566,7 @@ button:focus-visible {
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 12px;
-  transition: all 0.25s ease;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.3s var(--ease-out-2);
   transform: translateZ(50px);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
@@ -556,29 +575,6 @@ button:focus-visible {
   border-color: rgba(255, 255, 255, 0.4);
   transform: translateZ(50px) scale(1.02);
   color: #fff;
-}
-
-.hero-status {
-  position: relative;
-  z-index: 2;
-  margin-top: 40px;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 12px;
-  color: var(--text-dim);
-  border: 1px solid var(--border);
-  padding: 8px 16px;
-  border-radius: 999px;
-  background: var(--bg-raise);
-  width: fit-content;
-}
-.status-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #56d364;
-  animation: pulse-dot 2s infinite;
 }
 
 .hero-scroll-cue {
@@ -612,6 +608,9 @@ button:focus-visible {
 
 /* ---------- statement ---------- */
 .statement {
+  position: relative;
+  z-index: 1;
+  background: var(--bg);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }
@@ -633,11 +632,6 @@ button:focus-visible {
   border-bottom: 1px solid var(--border);
   padding-bottom: 20px;
 }
-.section-eyebrow {
-  font-size: 12px;
-  color: var(--accent);
-  font-family: var(--font-display);
-}
 .section-title {
   font-family: var(--font-display);
   font-weight: 400;
@@ -648,6 +642,18 @@ button:focus-visible {
 }
 
 /* ---------- about ---------- */
+.about {
+  position: relative;
+  z-index: 2;
+  border-radius: 56px 56px 0 0;
+  box-shadow: 0 -24px 60px rgba(0, 0, 0, 0.35);
+  background: #ffffff;
+  color: #050505;
+  --text: #050505;
+  --text-dim: #4d4d4d;
+  --border: rgba(0, 0, 0, 0.1);
+  --border-strong: rgba(0, 0, 0, 0.18);
+}
 .about-grid {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
@@ -662,11 +668,111 @@ button:focus-visible {
   color: var(--text-dim);
   margin: 0 0 24px;
 }
-.about-list li {
-  padding: 16px 0;
-  border-bottom: 1px solid var(--border);
-  font-size: 14px;
-  letter-spacing: 0.04em;
+.about-photo {
+  position: relative;
+  min-height: 620px;
+}
+@media (max-width: 860px) {
+  .about-photo { min-height: 500px; }
+}
+
+/* --- about skill tags --- */
+.about-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 28px;
+}
+.about-skill-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 16px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 100px;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: #1a1a1a;
+  background: transparent;
+  transition: background 0.18s, border-color 0.18s, color 0.18s;
+  cursor: default;
+  user-select: none;
+}
+.about-skill-tag:hover {
+  background: #050505;
+  border-color: #050505;
+  color: #fff;
+}
+
+/* --- about CAVA card --- */
+.about-cava-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 20px;
+  padding: 14px 16px 14px 14px;
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  border-radius: 16px;
+  background: #f9f9f9;
+  transition: border-color 0.2s, background 0.2s;
+}
+.about-cava-card:hover {
+  border-color: rgba(0, 0, 0, 0.18);
+  background: #f4f4f4;
+}
+.about-cava-avatar {
+  width: 56px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.09);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+}
+.about-cava-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  padding: 5px 6px;
+  display: block;
+}
+.about-cava-label {
+  flex: 1;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: #111;
+}
+.about-cava-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 100px;
+  background: #111;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.18s, transform 0.18s;
+}
+.about-cava-btn:hover {
+  background: #5b8cff;
+  transform: translateY(-1px);
+}
+.about-cava-btn svg {
+  flex-shrink: 0;
 }
 
 /* ---------- tech stack ---------- */
@@ -990,12 +1096,6 @@ button:focus-visible {
 [data-reveal] {
   opacity: 0;
   transform: translateY(24px);
-}
-
-@keyframes pulse-dot {
-  0% { box-shadow: 0 0 0 0 rgba(86, 211, 100, 0.5); }
-  70% { box-shadow: 0 0 0 8px rgba(86, 211, 100, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(86, 211, 100, 0); }
 }
 
 @keyframes cue-fall {

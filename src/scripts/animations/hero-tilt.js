@@ -1,5 +1,5 @@
-export function initHeroTilt() {
-  const card = document.getElementById("heroTiltCard");
+export function initHeroTilt(cardId = "heroTiltCard") {
+  const card = document.getElementById(cardId);
   if (!card) return;
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;

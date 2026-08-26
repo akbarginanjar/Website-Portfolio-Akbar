@@ -20,21 +20,13 @@ export function initHeroEntrance(gsap) {
     { yPercent: 0, duration: 1.3, stagger: 0.09 },
     0.1
   ).to(
-    ".eyebrow",
-    { opacity: 1, y: 0, duration: 0.9 },
-    0.15
-  ).to(
-    [".hero-sub", ".hero-cta"],
+    [".hero-sub", ".hero-socials", ".hero-cta"],
     { opacity: 1, y: 0, duration: 0.9, stagger: 0.08 },
     0.55
   ).to(
     ".hero-photo",
     { opacity: 1, y: 0, duration: 1.0 },
     0.6
-  ).to(
-    ".hero-status",
-    { opacity: 1, y: 0, duration: 0.8 },
-    0.9
   );
 
   return tl;
@@ -80,6 +72,7 @@ export function initStatementReveal(gsap, ScrollTrigger) {
   const words = el.textContent.trim().split(/\s+/);
   el.innerHTML = words.map((w) => `<span class="word">${w}</span>`).join(" ");
 
+  gsap.set(el.querySelectorAll(".word"), { opacity: 0 });
   gsap.to(el.querySelectorAll(".word"), {
     opacity: 1,
     stagger: 0.04,
@@ -122,6 +115,21 @@ export function initScrollProgress(gsap, ScrollTrigger) {
     },
   });
   gsap.set(bar, { scaleX: 0, transformOrigin: "left" });
+}
+
+export function initOverlapAbout(ScrollTrigger) {
+  const statement = document.querySelector(".statement");
+  const about = document.getElementById("about");
+  if (!statement || !about) return;
+
+  ScrollTrigger.create({
+    trigger: statement,
+    start: "top top",
+    endTrigger: about,
+    end: "top top",
+    pin: true,
+    pinSpacing: false,
+  });
 }
 
 export function initParallaxProjects(gsap, ScrollTrigger) {

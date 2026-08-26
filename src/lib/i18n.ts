@@ -7,18 +7,15 @@ export const translations = {
       contact: "CONTACT",
     },
     hero: {
-      eyebrow: "WEB · MOBILE · AI",
       title1: "AKBAR",
       title2: "GINANJAR",
       sub: "Web & Mobile Developer crafting modern digital products with Flutter, Laravel, Node.js — and the intelligence to make them think.",
       viewWork: "View Selected Work",
       letsTalk: "Let's Talk",
-      status: "Available for selected projects",
       scroll: "SCROLL",
     },
     statement: "I build digital products that combine thoughtful design, robust engineering and intelligent technology.",
     about: {
-      eyebrow: "01",
       title: "About",
       p1: "I'm Akbar Ginanjar, a developer focused on building modern web and mobile applications. I work across frontend, backend and mobile ecosystems, and spend increasing amounts of time exploring how AI can make digital products more intelligent — not louder, just smarter.",
       p2: "My work spans government platforms, mobile commerce, and disaster response systems — projects where reliability and clarity matter as much as polish.",
@@ -31,15 +28,12 @@ export const translations = {
       ],
     },
     stack: {
-      eyebrow: "02",
       title: "Technologies",
     },
     work: {
-      eyebrow: "03",
       title: "Selected Work",
     },
     experience: {
-      eyebrow: "04",
       title: "Experience",
       items: [
         { date: "2024 — Present", role: "Web & Mobile Developer", company: "PT Icommits" },
@@ -48,7 +42,6 @@ export const translations = {
       ],
     },
     services: {
-      eyebrow: "05",
       title: "What I Do",
       items: [
         "Web Development",
@@ -60,7 +53,6 @@ export const translations = {
       ],
     },
     ai: {
-      eyebrow: "06",
       title: "Building With AI",
       desc: "I explore how artificial intelligence can transform ordinary applications into intelligent experiences — systems that read context, not just input.",
     },
@@ -81,20 +73,17 @@ export const translations = {
       contact: "KONTAK",
     },
     hero: {
-      eyebrow: "WEB · MOBILE · AI",
       title1: "AKBAR",
       title2: "GINANJAR",
-      sub: "Web & Mobile Developer merancang produk digital modern dengan Flutter, Laravel, Node.js — serta kecerdasan AI untuk membuat aplikasi berpikir.",
+      sub: "Web & Mobile Developer dan Digital Designer yang memadukan teknologi, desain, dan AI untuk menciptakan produk digital modern dan cerdas.",
       viewWork: "Lihat Karya Pilihan",
       letsTalk: "Mari Berdiskusi",
-      status: "Tersedia untuk proyek pilihan",
       scroll: "GULIR",
     },
-    statement: "Saya membangun produk digital yang menggabungkan desain matang, rekayasa yang andal, dan teknologi cerdas.",
+    statement: "Saya membangun produk digital yang menggabungkan desain matang, rekayasa yang anjal, dan teknologi cerdas.",
     about: {
-      eyebrow: "01",
       title: "Tentang Saya",
-      p1: "Saya Akbar Ginanjar, pengembang yang berfokus pada pembuatan aplikasi web dan mobile modern. Saya bekerja di ekosistem frontend, backend, dan mobile, serta mengeksplorasi bagaimana AI dapat membuat produk digital lebih cerdas — tidak berisik, hanya lebih pintar.",
+      p1: "Saya Akbar Ginanjar, seorang pengembang dan desainer digital yang berfokus pada pembuatan produk digital modern, mulai dari website dan aplikasi mobile hingga desain antarmuka dan visual. Saya bekerja di ekosistem frontend, backend, dan mobile, sekaligus mengembangkan UI/UX serta desain grafis untuk menciptakan pengalaman digital yang menarik, fungsional, dan berkarakter. Saya juga mengeksplorasi bagaimana AI dapat diintegrasikan untuk membuat produk digital lebih cerdas, inovatif, dan adaptif.",
       p2: "Karya saya mencakup platform pemerintah, e-commerce mobile, dan sistem tanggap bencana — proyek di mana keandalan dan kejelasan sangat diutamakan.",
       list: [
         "Pengembangan Web",
@@ -105,15 +94,12 @@ export const translations = {
       ],
     },
     stack: {
-      eyebrow: "02",
       title: "Teknologi",
     },
     work: {
-      eyebrow: "03",
       title: "Karya Pilihan",
     },
     experience: {
-      eyebrow: "04",
       title: "Pengalaman",
       items: [
         { date: "2024 — Sekarang", role: "Web & Mobile Developer", company: "PT Icommits" },
@@ -122,7 +108,6 @@ export const translations = {
       ],
     },
     services: {
-      eyebrow: "05",
       title: "Layanan Saya",
       items: [
         "Pengembangan Web",
@@ -134,7 +119,6 @@ export const translations = {
       ],
     },
     ai: {
-      eyebrow: "06",
       title: "Membangun Dengan AI",
       desc: "Saya mengeksplorasi bagaimana kecerdasan buatan dapat mengubah aplikasi biasa menjadi pengalaman cerdas — sistem yang memahami konteks, bukan hanya masukan data.",
     },

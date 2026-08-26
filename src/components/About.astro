@@ -1,8 +1,17 @@
 ---
+import Lanyard from "@/components/Lanyard.jsx";
+
+const skills = [
+  { en: "Web Development",       id: "Pengembangan Web" },
+  { en: "Mobile Development",    id: "Pengembangan Mobile" },
+  { en: "Fullstack",             id: "Fullstack" },
+  { en: "Graphic Design",        id: "Desain Grafis" },
+  { en: "Artificial Intelligence", id: "Artificial Intelligence" },
+  { en: "UI/UX",                 id: "UI/UX" },
+];
 ---
 <section class="about" id="about">
   <div class="section-head">
-    <span class="section-eyebrow">01</span>
     <h2 class="section-title" data-split data-i18n="about.title" data-i18n-direct>About</h2>
   </div>
   <div class="about-grid">
@@ -11,21 +20,53 @@
         I'm Akbar Ginanjar, a developer focused on building modern web and
         mobile applications. I work across frontend, backend and mobile
         ecosystems, and spend increasing amounts of time exploring how AI
-        can make digital products more intelligent — not louder, just
-        smarter.
+        can make digital products more intelligent.
       </p>
       <p data-reveal data-i18n="about.p2" data-i18n-direct>
-        My work spans government platforms, mobile commerce, and disaster
-        response systems — projects where reliability and clarity matter
-        as much as polish.
+        My work spans a range of digital products, from government
+        platforms, mobile commerce, and disaster response systems, to ERP
+        platforms and e-course systems, with a focus on solutions that are
+        functional, modern, and deliver a great user experience.
       </p>
+
+      <!-- Skill Tags -->
+      <div class="about-skills" data-reveal>
+        {skills.map((s) => (
+          <span class="about-skill-tag" data-i18n-skill-en={s.en} data-i18n-skill-id={s.id}>{s.en}</span>
+        ))}
+      </div>
+
+      <!-- CAVA Perfume Card -->
+      <div class="about-cava-card" data-reveal>
+        <div class="about-cava-avatar">
+          <img src="/assets/cava-logo.jpg" alt="CAVA Parfums" />
+        </div>
+        <span class="about-cava-label" data-i18n="about.cava.label" data-i18n-direct>Owner · CAVA Perfume</span>
+        <a
+          href="https://cavaperfume.vercel.app"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="about-cava-btn"
+          aria-label="Visit CAVA Perfume website"
+        >
+          <span data-i18n="about.cava.btn" data-i18n-direct>Visit</span>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+            <path d="M1.5 10.5L10.5 1.5M10.5 1.5H4.5M10.5 1.5V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
     </div>
-    <ul class="about-list">
-      <li data-reveal><span data-i18n="about.l1" data-i18n-direct>Web Development</span></li>
-      <li data-reveal><span data-i18n="about.l2" data-i18n-direct>Mobile Development</span></li>
-      <li data-reveal><span data-i18n="about.l3" data-i18n-direct>Backend Engineering</span></li>
-      <li data-reveal><span data-i18n="about.l4" data-i18n-direct>AI Integration</span></li>
-      <li data-reveal><span data-i18n="about.l5" data-i18n-direct>Intelligent Applications</span></li>
-    </ul>
+    <div class="about-photo" data-reveal>
+      <Lanyard
+        client:only="react"
+        position={[0, 0, 13.5]}
+        gravity={[0, -40, 0]}
+        frontImage="/assets/akbar-front.jpg"
+        backImage="/assets/akbar-back.jpg"
+        imageFit="cover"
+        name="Akbar Ginanjar"
+        role="Web & Mobile Developer"
+      />
+    </div>
   </div>
 </section>

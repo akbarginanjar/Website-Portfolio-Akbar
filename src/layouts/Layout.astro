@@ -1,6 +1,8 @@
 ---
 import "@/styles/globals.css";
 
+const SITE_URL = "https://akbarginanjar.vercel.app";
+
 interface Props {
   title?: string;
   description?: string;
@@ -10,6 +12,29 @@ const {
   title = "Akbar Ginanjar — Web & Mobile Developer",
   description = "Akbar Ginanjar — Web Developer & Mobile Developer building modern digital products with Flutter, Laravel, Node.js and AI.",
 } = Astro.props;
+
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Akbar Ginanjar",
+  jobTitle: "Web & Mobile Developer",
+  description,
+  url: SITE_URL,
+  image: `${SITE_URL}/assets/akbar.webp`,
+  sameAs: [
+    "https://github.com/akbarginanjar",
+    "https://www.instagram.com/_peterven",
+    "https://www.linkedin.com/in/akbar-ginanjar-a91b2333b",
+  ],
+  knowsAbout: [
+    "Web Development",
+    "Mobile Development",
+    "Flutter",
+    "Laravel",
+    "Node.js",
+    "AI Integration",
+  ],
+});
 ---
 
 <!DOCTYPE html>
@@ -19,6 +44,26 @@ const {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
   <meta name="description" content={description} />
+  <link rel="canonical" href={SITE_URL} />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#050505" />
+  <meta name="author" content="Akbar Ginanjar" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={SITE_URL} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={`${SITE_URL}/assets/akbar.webp`} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={`${SITE_URL}/assets/akbar.webp`} />
+
+  <script type="application/ld+json" set:html={jsonLd} />
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+  <link rel="preload" href="/assets/akbar.webp" as="image" fetchpriority="high" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

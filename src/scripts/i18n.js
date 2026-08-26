@@ -4,21 +4,14 @@ export const translations = {
     "nav.about": "ABOUT",
     "nav.services": "SERVICES",
     "nav.contact": "CONTACT",
-    "hero.eyebrow": "WEB · MOBILE · AI",
     "hero.sub": "Web & Mobile Developer crafting modern digital products with Flutter, Laravel, Node.js — and the intelligence to make them think.",
     "hero.viewWork": "View Selected Work",
     "hero.letsTalk": "Let's Talk",
-    "hero.status": "Available for selected projects",
     "hero.scroll": "SCROLL",
-    "statement": "I build digital products that combine thoughtful design, robust engineering and intelligent technology.",
+    "statement": "I design and build digital products that combine meaningful design, solid engineering, and intelligent technology to create digital experiences that are relevant and impactful.",
     "about.title": "About",
-    "about.p1": "I'm Akbar Ginanjar, a developer focused on building modern web and mobile applications. I work across frontend, backend and mobile ecosystems, and spend increasing amounts of time exploring how AI can make digital products more intelligent — not louder, just smarter.",
-    "about.p2": "My work spans government platforms, mobile commerce, and disaster response systems — projects where reliability and clarity matter as much as polish.",
-    "about.l1": "Web Development",
-    "about.l2": "Mobile Development",
-    "about.l3": "Backend Engineering",
-    "about.l4": "AI Integration",
-    "about.l5": "Intelligent Applications",
+    "about.p1": "I'm Akbar Ginanjar, a developer focused on building modern web and mobile applications. I work across frontend, backend and mobile ecosystems, and spend increasing amounts of time exploring how AI can make digital products more intelligent.",
+    "about.p2": "My work spans a range of digital products, from government platforms, mobile commerce, and disaster response systems, to ERP platforms and e-course systems, with a focus on solutions that are functional, modern, and deliver a great user experience.",
     "stack.title": "Technologies",
     "work.title": "Selected Work",
     "experience.title": "Experience",
@@ -43,6 +36,9 @@ export const translations = {
     "contact.title": "LET'S BUILD<br>SOMETHING<br>GREAT.",
     "contact.sub": "Have an idea, product or project in mind? Let's turn it into something meaningful.",
     "contact.btn": "Start a Conversation",
+    "about.cava.label": "Owner · CAVA Perfume",
+    "about.cava.desc": "A luxury fragrance brand — crafting distinctive, premium scents with a modern sensibility.",
+    "about.cava.btn": "Visit",
     "footer.mid": "Web Developer · Mobile Developer · AI",
   },
   id: {
@@ -50,21 +46,14 @@ export const translations = {
     "nav.about": "TENTANG",
     "nav.services": "LAYANAN",
     "nav.contact": "KONTAK",
-    "hero.eyebrow": "WEB · MOBILE · AI",
-    "hero.sub": "Web & Mobile Developer merancang produk digital modern dengan Flutter, Laravel, Node.js — serta kecerdasan AI untuk membuat aplikasi berpikir.",
+    "hero.sub": "Web & Mobile Developer dan Digital Designer yang memadukan teknologi, desain, dan AI untuk menciptakan produk digital modern dan cerdas.",
     "hero.viewWork": "Lihat Karya Pilihan",
     "hero.letsTalk": "Mari Berdiskusi",
-    "hero.status": "Tersedia untuk proyek pilihan",
     "hero.scroll": "GULIR",
-    "statement": "Saya membangun produk digital yang menggabungkan desain matang, rekayasa yang anjal, dan teknologi cerdas.",
+    "statement": "Saya merancang dan membangun produk digital yang memadukan desain yang bermakna, engineering yang solid, dan teknologi cerdas untuk menciptakan pengalaman digital yang relevan dan berdampak.",
     "about.title": "Tentang Saya",
-    "about.p1": "Saya Akbar Ginanjar, pengembang yang berfokus pada pembuatan aplikasi web dan mobile modern. Saya bekerja di ekosistem frontend, backend, dan mobile, serta mengeksplorasi bagaimana AI dapat membuat produk digital lebih cerdas — tidak berisik, hanya lebih pintar.",
-    "about.p2": "Karya saya mencakup platform pemerintah, e-commerce mobile, dan sistem tanggap bencana — proyek di mana keandalan dan kejelasan sangat diutamakan.",
-    "about.l1": "Pengembangan Web",
-    "about.l2": "Pengembangan Mobile",
-    "about.l3": "Rekayasa Backend",
-    "about.l4": "Integrasi AI",
-    "about.l5": "Aplikasi Cerdas",
+    "about.p1": "Saya Akbar Ginanjar, seorang pengembang dan desainer digital yang berfokus pada pembuatan produk digital modern, mulai dari website dan aplikasi mobile hingga desain antarmuka dan visual. Saya bekerja di ekosistem frontend, backend, dan mobile, sekaligus mengembangkan UI/UX serta desain grafis untuk menciptakan pengalaman digital yang menarik, fungsional, dan berkarakter. Saya juga mengeksplorasi bagaimana AI dapat diintegrasikan untuk membuat produk digital lebih cerdas, inovatif, dan adaptif.",
+    "about.p2": "Karya saya mencakup berbagai produk digital, mulai dari platform pemerintahan, e-commerce mobile, sistem tanggap bencana, hingga platform ERP dan e-course, dengan fokus pada solusi yang fungsional, modern, dan memberikan pengalaman pengguna yang baik.",
     "stack.title": "Teknologi",
     "work.title": "Karya Pilihan",
     "experience.title": "Pengalaman",
@@ -89,6 +78,9 @@ export const translations = {
     "contact.title": "MARI BANGUN<br>SESUATU YANG<br>HEBAT.",
     "contact.sub": "Punya ide, produk, atau proyek yang ingin dibuat? Mari ubah menjadi sesuatu yang berdampak nyata.",
     "contact.btn": "Mulai Diskusi",
+    "about.cava.label": "Owner · CAVA Perfume",
+    "about.cava.desc": "Brand wewangian mewah — meracik aroma premium yang khas dengan sensibilitas modern.",
+    "about.cava.btn": "Kunjungi",
     "footer.mid": "Web Developer · Mobile Developer · AI",
   },
 };
@@ -118,13 +110,23 @@ export function initI18n() {
       if (text) {
         if (el.dataset.i18nHtml !== undefined) {
           el.innerHTML = text;
-        } else if (el.querySelector("span") && !el.dataset.i18nDirect) {
+        } else if (el.querySelector("span") && el.dataset.i18nDirect === undefined) {
           const span = el.querySelector("span");
           span.textContent = text;
         } else {
           el.textContent = text;
         }
       }
+    });
+
+    // Skill card name translations (data-i18n-skill-en / data-i18n-skill-id)
+    document.querySelectorAll("[data-i18n-skill-en]").forEach((el) => {
+      el.textContent = lang === "id" ? el.dataset.i18nSkillId : el.dataset.i18nSkillEn;
+    });
+
+    // Skill card desc translations (data-i18n-desc-en / data-i18n-desc-id)
+    document.querySelectorAll("[data-i18n-desc-en]").forEach((el) => {
+      el.textContent = lang === "id" ? el.dataset.i18nDescId : el.dataset.i18nDescEn;
     });
   }
 
