@@ -1,0 +1,93 @@
+---
+const skills = [
+  { name: "PHP", file: "php" },
+  { name: "JavaScript", file: "javascript" },
+  { name: "TypeScript", file: "typescript" },
+  { name: "Dart", file: "dart" },
+  { name: "Laravel", file: "laravel" },
+  { name: "React", file: "react" },
+  { name: "Vue.js", file: "vue" },
+  { name: "Flutter", file: "flutter" },
+  { name: "Astro", file: "astro" },
+  { name: "Tailwind CSS", file: "tailwind" },
+  { name: "Node.js", file: "nodejs" },
+  { name: "PostgreSQL", file: "postgresql" },
+  { name: "MySQL", file: "mysql" },
+  { name: "Docker", file: "docker" },
+  { name: "GitHub", file: "github" },
+  { name: "Figma", file: "figma" },
+];
+
+/** Deterministic shuffle so builds stay stable. */
+function shuffle(items, seed = 7) {
+  const arr = [...items];
+  let s = seed;
+  for (let i = arr.length - 1; i > 0; i--) {
+    s = (s * 16807) % 2147483647;
+    const j = s % (i + 1);
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+/** Repeat icons so each marquee half stays wider than typical viewports. */
+function fillRow(items, minCount = 14) {
+  const out = [];
+  while (out.length < minCount) out.push(...items);
+  return out;
+}
+
+const shuffled = shuffle(skills);
+const chunk = Math.ceil(shuffled.length / 3);
+const rows = [
+  { direction: "left", duration: "38s", items: fillRow(shuffled.slice(0, chunk)) },
+  { direction: "right", duration: "44s", items: fillRow(shuffled.slice(chunk, chunk * 2)) },
+  { direction: "left", duration: "40s", items: fillRow(shuffled.slice(chunk * 2)) },
+];
+---
+
+<section class="skill" id="skill" aria-labelledby="skill-title">
+  <div class="section-head">
+    <h2 class="section-title" id="skill-title" data-split data-i18n="skill.title" data-i18n-direct>Skill</h2>
+  </div>
+
+  <ul class="skill-a11y-list">
+    {skills.map((item) => (
+      <li>{item.name}</li>
+    ))}
+  </ul>
+
+  <div class="skill-rows" aria-hidden="true">
+    {rows.map((row) => (
+      <div class="skill-row" data-reveal>
+        <div class="skill-row__viewport">
+          <div
+            class:list={["skill-row__track", row.direction === "right" && "skill-row__track--reverse"]}
+            style={`--skill-duration: ${row.duration}`}
+          >
+            {[0, 1].map(() => (
+              <ul class="skill-row__list">
+                {row.items.map((item) => (
+                  <li class="skill-row__item">
+                    <span class="skill-row__hit" data-name={item.name}>
+                      <img
+                        class="skill-row__icon"
+                        src={`/assets/skills/${item.file}.svg`}
+                        alt=""
+                        width="64"
+                        height="64"
+                        loading="lazy"
+                        decoding="async"
+                        draggable="false"
+                      />
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            ))}
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
