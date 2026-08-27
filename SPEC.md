@@ -24,6 +24,7 @@ A personal portfolio site for Akbar Ginanjar, a web & mobile developer, that:
 - **Statement** — single-line positioning statement.
 - **About** — bio, focus areas, cross-domain summary.
 - **Tech stack** — the technologies used (Flutter, Laravel, Node.js, Vue/Nuxt, React/Astro, TypeScript, PostgreSQL/MySQL, AI integration, Three.js/GSAP).
+- **Certificates** — a fan-style card stack of credentials / course certificates below Skills, with keyboard, swipe, and dots navigation.
 - **Selected work** — a curated project list (currently: Matrial — AI material marketplace; Balanja Express — mobile commerce; BPBD Jawa Barat — regional disaster-management government platform; Damkar Jawa Barat — fire & rescue public info platform; Barata — disaster-response field app; E-Course — online learning platform), each with tags, a title, and a short description, expandable into a detail overlay.
 - **Experience** — a reverse-chronological timeline of roles.
 - **Services** — a list of service offerings (web, mobile, backend, AI integration, intelligent applications, interactive web experiences).

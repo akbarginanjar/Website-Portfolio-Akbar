@@ -18,6 +18,7 @@ import { initProjectOverlay } from "./animations/projects.js";
 import { initHeroTilt } from "./animations/hero-tilt.js";
 import { initHeroWave } from "./three/hero-wave.js";
 import { initAINetwork } from "./three/ai-network.js";
+import { initCardStack } from "./animations/card-stack.js";
 import { initI18n } from "./i18n.js";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -33,12 +34,12 @@ initHeroEntrance(gsap);
 initSectionTitles(gsap, ScrollTrigger);
 initGenericReveals(gsap, ScrollTrigger);
 initStatementReveal(gsap, ScrollTrigger);
-initOverlapSection(ScrollTrigger, ".statement", "#about");
-initOverlapSection(ScrollTrigger, ".skill", "#work");
+initOverlapSection(ScrollTrigger, ".certificates", "#work");
 initTimelineFill(gsap, ScrollTrigger);
 initScrollProgress(gsap, ScrollTrigger);
 initParallaxProjects(gsap, ScrollTrigger);
 initProjectOverlay(gsap, lenis);
+initCardStack(gsap);
 
 initHeroWave();
 initHeroTilt();
