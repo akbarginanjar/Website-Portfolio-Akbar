@@ -27,7 +27,7 @@ Astro static site, no backend, no database, no auth, no client framework (no Rea
 
 **Behavior:** all interactivity is wired imperatively by a single script, loaded once from `Layout.astro` (`<script src="../scripts/main.js">`). `src/scripts/main.js` registers GSAP's ScrollTrigger, boots Lenis synced to the GSAP ticker, then calls init functions from feature modules in sequence:
 - `lenis-setup.js` — smooth scroll
-- `i18n.js` — runtime EN/ID text swap driven by `data-i18n` attributes and the `.lang-btn[data-lang]` control in `Nav.astro`
+- `i18n.js` — runtime EN/ID/SU text swap driven by `data-i18n` attributes and the `.lang-btn[data-lang]` control in `Nav.astro`
 - `animations/cursor.js`, `nav.js`, `reveal.js`, `hero-tilt.js`, `projects.js` — custom cursor, nav state, scroll reveals/split-text/timeline/progress bar, hero tilt, project detail overlay
 - `three/hero-wave.js`, `three/ai-network.js` — WebGL hero visual, Canvas2D neural-network visual
 
@@ -35,7 +35,7 @@ New interactive behavior belongs in this same pattern: a small module in `src/sc
 
 **Styling:** Tailwind is configured but the site is styled almost entirely with hand-written CSS in `src/styles/globals.css` using CSS custom properties as design tokens (see `DESIGN.md`). Treat Tailwind as available-but-not-the-primary system; don't introduce a second parallel styling approach without a reason.
 
-**i18n:** `src/scripts/i18n.js` (flat-key EN/ID dictionary) is what actually drives the UI. `src/lib/i18n.ts` is a differently-shaped, unused dictionary nothing imports — do not treat it as live, and do not silently let it drift further out of sync; if you touch translated copy, either update both or (preferably, next time you're in the area) delete the dead one after confirming with the user.
+**i18n:** `src/scripts/i18n.js` (flat-key EN/ID/SU dictionary) is what actually drives the UI. `src/lib/i18n.ts` is a differently-shaped, unused dictionary nothing imports — do not treat it as live, and do not silently let it drift further out of sync; if you touch translated copy, either update all locales or (preferably, next time you're in the area) delete the dead one after confirming with the user.
 
 **Known dead weight, not part of the build:**
 - Root-level `index.html`, `css/`, `js/`, root `assets/`, and the root `README.md` are leftovers from a pre-Astro version of this site (vanilla HTML/CSS/JS). `astro build` only reads `src/` and `public/`. Don't edit these expecting it to affect the live site; the root `README.md`'s described structure is stale.
@@ -88,7 +88,7 @@ There's no server/API layer, so "error handling" here mostly means defensive cli
 ## 8. Maintainability
 
 - Keep `main.js` as the single orchestration point — new features register there, they don't self-invoke via new inline scripts in components or new `<script>` tags in `Layout.astro`.
-- Keep the EN/ID translation dictionary (`src/scripts/i18n.js`) and the `data-i18n` keys in components in sync; a key added to one without the other is a silent bug (missing translation or dead key).
+- Keep the EN/ID/SU translation dictionary (`src/scripts/i18n.js`) and the `data-i18n` keys in components in sync; a key added to one without the other is a silent bug (missing translation or dead key).
 - Favor deleting genuinely dead code (once confirmed unused) over leaving it to accumulate — but don't delete the legacy root files or `components/ui/*` speculatively as part of an unrelated task; that's a deliberate cleanup task of its own, flag it to the user instead.
 
 ## 9. Git / change discipline

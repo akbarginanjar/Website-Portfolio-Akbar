@@ -85,26 +85,75 @@ export const translations = {
     "about.cava.btn": "Kunjungi",
     "footer.mid": "Web Developer · Mobile Developer · AI",
   },
+  su: {
+    "nav.work": "KARYA",
+    "nav.about": "NGEUNAAN",
+    "nav.services": "LAYANAN",
+    "nav.contact": "KONTAK",
+    "hero.sub": "Web & Mobile Developer nu ngarancang produk digital modern ku Flutter, Laravel, Node.js — jeung kecerdasan pikeun ngajadikeunana mikir.",
+    "hero.viewWork": "Tempo Karya Pilihan",
+    "hero.letsTalk": "Hayu Ngobrol",
+    "hero.scroll": "GULIR",
+    "statement": "Abdi ngarancang jeung ngawangun produk digital nu ngahijikeun desain bermakna, engineering solid, jeung téhnologi cerdas pikeun nyiptakeun pangalaman digital nu relevan jeung mangaruhan.",
+    "about.title": "Ngeunaan Abdi",
+    "about.p1": "Abdi Akbar Ginanjar, panembang nu fokus kana ngawangun aplikasi web jeung mobile modern. Abdi digawé dina ekosistém frontend, backend, jeung mobile, sarta beuki loba waktos ngajajah kumaha AI tiasa ngajadikeun produk digital leuwih cerdas.",
+    "about.p2": "Karya abdi ngawengku rupa-rupa produk digital, ti platform pamaréntahan, commerce mobile, sistem tanggap bencana, nepi ka platform ERP jeung e-course, kalayan fokus kana solusi nu fungsional, modern, sarta méré pangalaman pamaké nu alus.",
+    "skill.title": "Kabisa",
+    "stack.title": "Téhnologi",
+    "work.title": "Karya Pilihan",
+    "experience.title": "Pangalaman",
+    "exp1.date": "2024 — Ayeuna",
+    "exp1.role": "Web & Mobile Developer",
+    "exp1.comp": "PT Icommits",
+    "exp2.date": "2023 — 2024",
+    "exp2.role": "Pangembangan Frontend & Mobile",
+    "exp2.comp": "Rupa-rupa proyék digital",
+    "exp3.date": "2022 — 2023",
+    "exp3.role": "Junior Web Developer",
+    "exp3.comp": "Freelance & proyék kontrak",
+    "services.title": "Layanan Abdi",
+    "serv1": "Pangembangan Web",
+    "serv2": "Pangembangan Mobile",
+    "serv3": "Pangembangan Backend",
+    "serv4": "Integrasi AI",
+    "serv5": "Pangembangan Aplikasi Cerdas",
+    "serv6": "Pangalaman Web Interaktif",
+    "ai.title": "Ngawangun Ku AI",
+    "ai.desc": "Abdi ngajajah kumaha kecerdasan jieunan tiasa ngarobah aplikasi biasa jadi pangalaman cerdas — sistem nu maca kontéks, lain ngan input wungkul.",
+    "contact.title": "HAYU NGARENCANG<br>HAL ANU<br>HEBAT.",
+    "contact.sub": "Boga ide, produk, atawa proyék? Hayu robah jadi hal anu bermakna.",
+    "contact.btn": "Mimitian Paguneman",
+    "about.cava.label": "Owner · CAVA Perfume",
+    "about.cava.desc": "Merek wewangian mewah — ngaracik aroma premium khas kalayan sensibilitas modern.",
+    "about.cava.btn": "Datang",
+    "footer.mid": "Web Developer · Mobile Developer · AI",
+  },
 };
 
+const SUPPORTED_LANGS = ["en", "id", "su"];
+
+function datasetKey(prefix, lang) {
+  return `${prefix}${lang.charAt(0).toUpperCase()}${lang.slice(1)}`;
+}
+
+function pickLocalizedAttr(el, prefix, lang) {
+  return el.dataset[datasetKey(prefix, lang)] || el.dataset[datasetKey(prefix, "en")] || "";
+}
+
 export function initI18n() {
-  const currentLang = localStorage.getItem("portfolio_lang") || "en";
+  const stored = localStorage.getItem("portfolio_lang");
+  const currentLang = SUPPORTED_LANGS.includes(stored) ? stored : "en";
 
   function setLanguage(lang) {
+    if (!SUPPORTED_LANGS.includes(lang)) return;
+
     localStorage.setItem("portfolio_lang", lang);
     document.documentElement.setAttribute("lang", lang);
 
-    // Update active UI toggle buttons
     document.querySelectorAll(".lang-btn").forEach((btn) => {
-      const btnLang = btn.dataset.lang;
-      if (btnLang === lang) {
-        btn.classList.add("is-active");
-      } else {
-        btn.classList.remove("is-active");
-      }
+      btn.classList.toggle("is-active", btn.dataset.lang === lang);
     });
 
-    // Update DOM elements with data-i18n attribute
     const dict = translations[lang] || translations.en;
     document.querySelectorAll("[data-i18n]").forEach((el) => {
       const key = el.dataset.i18n;
@@ -121,18 +170,15 @@ export function initI18n() {
       }
     });
 
-    // Skill card name translations (data-i18n-skill-en / data-i18n-skill-id)
     document.querySelectorAll("[data-i18n-skill-en]").forEach((el) => {
-      el.textContent = lang === "id" ? el.dataset.i18nSkillId : el.dataset.i18nSkillEn;
+      el.textContent = pickLocalizedAttr(el, "i18nSkill", lang);
     });
 
-    // Skill card desc translations (data-i18n-desc-en / data-i18n-desc-id)
     document.querySelectorAll("[data-i18n-desc-en]").forEach((el) => {
-      el.textContent = lang === "id" ? el.dataset.i18nDescId : el.dataset.i18nDescEn;
+      el.textContent = pickLocalizedAttr(el, "i18nDesc", lang);
     });
   }
 
-  // Bind click handlers to language switch buttons
   document.querySelectorAll(".lang-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
       const lang = btn.dataset.lang;
@@ -140,6 +186,5 @@ export function initI18n() {
     });
   });
 
-  // Set initial language state
   setLanguage(currentLang);
 }

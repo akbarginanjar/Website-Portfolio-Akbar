@@ -2,12 +2,12 @@
 import Lanyard from "@/components/Lanyard.jsx";
 
 const skills = [
-  { en: "Web Development",       id: "Pengembangan Web" },
-  { en: "Mobile Development",    id: "Pengembangan Mobile" },
-  { en: "Fullstack",             id: "Fullstack" },
-  { en: "Graphic Design",        id: "Desain Grafis" },
-  { en: "Artificial Intelligence", id: "Artificial Intelligence" },
-  { en: "UI/UX",                 id: "UI/UX" },
+  { en: "Web Development",         id: "Pengembangan Web",    su: "Pangembangan Web" },
+  { en: "Mobile Development",      id: "Pengembangan Mobile", su: "Pangembangan Mobile" },
+  { en: "Fullstack",               id: "Fullstack",           su: "Fullstack" },
+  { en: "Graphic Design",          id: "Desain Grafis",       su: "Desain Grafis" },
+  { en: "Artificial Intelligence", id: "Artificial Intelligence", su: "Artificial Intelligence" },
+  { en: "UI/UX",                   id: "UI/UX",               su: "UI/UX" },
 ];
 ---
 <section class="about" id="about">
@@ -32,7 +32,12 @@ const skills = [
       <!-- Skill Tags -->
       <div class="about-skills" data-reveal>
         {skills.map((s) => (
-          <span class="about-skill-tag" data-i18n-skill-en={s.en} data-i18n-skill-id={s.id}>{s.en}</span>
+          <span
+            class="about-skill-tag"
+            data-i18n-skill-en={s.en}
+            data-i18n-skill-id={s.id}
+            data-i18n-skill-su={s.su}
+          >{s.en}</span>
         ))}
       </div>
 
