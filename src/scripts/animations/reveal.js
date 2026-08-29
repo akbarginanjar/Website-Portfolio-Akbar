@@ -117,7 +117,7 @@ export function initScrollProgress(gsap, ScrollTrigger) {
   gsap.set(bar, { scaleX: 0, transformOrigin: "left" });
 }
 
-export function initOverlapSection(ScrollTrigger, pinnedSelector, revealSelector) {
+export function initOverlapSection(ScrollTrigger, pinnedSelector, revealSelector, scrollExtension = 0) {
   const pinned = document.querySelector(pinnedSelector);
   const reveal = document.querySelector(revealSelector);
   if (!pinned || !reveal) return;
@@ -126,7 +126,7 @@ export function initOverlapSection(ScrollTrigger, pinnedSelector, revealSelector
     trigger: pinned,
     start: "top top",
     endTrigger: reveal,
-    end: "top top",
+    end: scrollExtension ? `top top+=${scrollExtension}` : "top top",
     pin: true,
     pinSpacing: false,
   });

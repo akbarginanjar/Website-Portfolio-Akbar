@@ -14,7 +14,7 @@ export function initCardStack(gsap) {
     const status = root.querySelector("[data-card-stack-status]");
     const prevBtn = root.querySelector("[data-card-stack-prev]");
     const nextBtn = root.querySelector("[data-card-stack-next]");
-    const preview = root.closest(".certificates")?.querySelector("[data-cert-preview]");
+    const preview = document.getElementById("certPreview");
     const previewImg = preview?.querySelector("[data-cert-preview-img]");
     const len = items.length;
     if (!len || !stage) return;
@@ -28,6 +28,8 @@ export function initCardStack(gsap) {
     let velocity = 0;
     let dragging = false;
     let dragMoved = false;
+    let captureActive = false;
+    let switchedCard = false;
     let previewTrigger = null;
 
     const maxOffset = 3;
@@ -134,17 +136,20 @@ export function initCardStack(gsap) {
       document.documentElement.classList.add("cert-preview-open");
 
       const panel = preview.querySelector(".cert-preview__panel");
+      const backdrop = preview.querySelector(".cert-preview__backdrop");
       const closeBtn = preview.querySelector(".cert-preview__close");
 
       if (reduceMotion) {
         gsap.set(preview, { opacity: 1 });
+        gsap.set(backdrop, { opacity: 1 });
         gsap.set(panel, { opacity: 1, scale: 1, y: 0 });
       } else {
         gsap.fromTo(preview, { opacity: 0 }, { opacity: 1, duration: 0.28, ease: "power2.out" });
+        gsap.fromTo(backdrop, { opacity: 0 }, { opacity: 1, duration: 0.32, ease: "power2.out" });
         gsap.fromTo(
           panel,
-          { opacity: 0, scale: 0.92, y: 24 },
-          { opacity: 1, scale: 1, y: 0, duration: 0.45, ease: "power4.out" },
+          { opacity: 0, scale: 0.94, y: 28 },
+          { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "power4.out" },
         );
       }
       closeBtn?.focus();
@@ -153,6 +158,7 @@ export function initCardStack(gsap) {
     function closePreview() {
       if (!preview || preview.hidden) return;
       const panel = preview.querySelector(".cert-preview__panel");
+      const backdrop = preview.querySelector(".cert-preview__backdrop");
 
       const finish = () => {
         preview.hidden = true;
@@ -171,6 +177,7 @@ export function initCardStack(gsap) {
         return;
       }
 
+      gsap.to(backdrop, { opacity: 0, duration: 0.22, ease: "power2.in" });
       gsap.to(panel, { opacity: 0, scale: 0.96, y: 12, duration: 0.22, ease: "power2.in" });
       gsap.to(preview, {
         opacity: 0,
@@ -191,9 +198,22 @@ export function initCardStack(gsap) {
 
     items.forEach((el, i) => {
       const card = el.querySelector(".cert-card");
-      card?.addEventListener("click", () => {
+
+      card?.addEventListener("pointerdown", (e) => {
+        if (card.dataset.active === "true") return;
+        e.stopPropagation();
+        switchedCard = true;
+        go(i);
+      });
+
+      card?.addEventListener("click", (e) => {
+        e.stopPropagation();
         if (dragMoved) return;
-        if (i !== active) {
+        if (switchedCard) {
+          switchedCard = false;
+          return;
+        }
+        if (card.dataset.active !== "true") {
           go(i);
           return;
         }
@@ -233,6 +253,8 @@ export function initCardStack(gsap) {
 
     stage.addEventListener("pointerdown", (e) => {
       if (e.target.closest(".card-stack__controls")) return;
+      const sideCard = e.target.closest(".cert-card:not([data-active='true'])");
+      if (sideCard) return;
       if (e.button != null && e.button !== 0) return;
       pointerId = e.pointerId;
       startX = e.clientX;
@@ -241,8 +263,7 @@ export function initCardStack(gsap) {
       velocity = 0;
       dragging = true;
       dragMoved = false;
-      stage.setPointerCapture?.(pointerId);
-      stage.classList.add("is-dragging");
+      captureActive = false;
     });
 
     stage.addEventListener("pointermove", (e) => {
@@ -254,7 +275,15 @@ export function initCardStack(gsap) {
       lastX = e.clientX;
       lastT = now;
 
-      if (Math.abs(dx) > 6) dragMoved = true;
+      if (!captureActive && Math.abs(dx) > 8) {
+        captureActive = true;
+        dragMoved = true;
+        stage.setPointerCapture?.(pointerId);
+        stage.classList.add("is-dragging");
+      }
+
+      if (!captureActive) return;
+
       layout(false, dx);
     });
 
@@ -263,20 +292,23 @@ export function initCardStack(gsap) {
       const dx = (e?.clientX ?? lastX) - startX;
       dragging = false;
       pointerId = null;
+      captureActive = false;
       stage.classList.remove("is-dragging");
+      stage.releasePointerCapture?.(e?.pointerId);
 
       const w = cardWidth();
       const distanceThreshold = Math.min(90, w * 0.14);
       const velocityThreshold = 450;
 
-      if (dx > distanceThreshold || velocity > velocityThreshold) prev();
-      else if (dx < -distanceThreshold || velocity < -velocityThreshold) next();
-      else layout();
+      if (dragMoved) {
+        if (dx > distanceThreshold || velocity > velocityThreshold) prev();
+        else if (dx < -distanceThreshold || velocity < -velocityThreshold) next();
+        else layout();
+      }
 
-      // allow click only if almost no movement
       window.setTimeout(() => {
         dragMoved = false;
-      }, 40);
+      }, 0);
     }
 
     stage.addEventListener("pointerup", endDrag);

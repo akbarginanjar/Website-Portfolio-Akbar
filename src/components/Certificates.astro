@@ -1,10 +1,15 @@
 ---
 const certificates = [
-  { id: "1", title: "Certificate 1", imageSrc: "/assets/certs/01.svg" },
-  { id: "2", title: "Certificate 2", imageSrc: "/assets/certs/02.svg" },
-  { id: "3", title: "Certificate 3", imageSrc: "/assets/certs/03.svg" },
-  { id: "4", title: "Certificate 4", imageSrc: "/assets/certs/04.svg" },
-  { id: "5", title: "Certificate 5", imageSrc: "/assets/certs/05.svg" },
+  {
+    id: "1",
+    title: "AI Ready ASEAN — Certificate of Completion",
+    imageSrc: "/assets/certs/ai-ready-asean.jpg",
+  },
+  {
+    id: "2",
+    title: "CODEPOLITAN — Belajar JavaScript Dasar",
+    imageSrc: "/assets/certs/codepolitan-javascript.jpg",
+  },
 ];
 ---
 
@@ -82,25 +87,25 @@ const certificates = [
 
     <p class="card-stack__status" data-card-stack-status aria-live="polite">{certificates[0].title}</p>
   </div>
-
-  <div
-    class="cert-preview"
-    id="certPreview"
-    data-cert-preview
-    hidden
-    aria-hidden="true"
-    role="dialog"
-    aria-modal="true"
-    aria-label="Certificate preview"
-  >
-    <button type="button" class="cert-preview__backdrop" data-cert-preview-close aria-label="Close preview"></button>
-    <div class="cert-preview__panel">
-      <button type="button" class="cert-preview__close" data-cert-preview-close aria-label="Close preview">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-          <path d="M4 4l10 10M14 4L4 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-      </button>
-      <img class="cert-preview__img" data-cert-preview-img alt="" />
-    </div>
-  </div>
 </section>
+
+<div
+  class="cert-preview"
+  id="certPreview"
+  data-cert-preview
+  hidden
+  aria-hidden="true"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Certificate preview"
+>
+  <button type="button" class="cert-preview__backdrop" data-cert-preview-close aria-label="Close preview"></button>
+  <div class="cert-preview__panel">
+    <button type="button" class="cert-preview__close" data-cert-preview-close aria-label="Close preview">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+        <path d="M4 4l10 10M14 4L4 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <img class="cert-preview__img" data-cert-preview-img alt="" />
+  </div>
+</div>

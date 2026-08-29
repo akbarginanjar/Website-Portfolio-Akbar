@@ -34,6 +34,7 @@ initHeroEntrance(gsap);
 initSectionTitles(gsap, ScrollTrigger);
 initGenericReveals(gsap, ScrollTrigger);
 initStatementReveal(gsap, ScrollTrigger);
+initOverlapSection(ScrollTrigger, ".statement", "#about");
 initOverlapSection(ScrollTrigger, ".certificates", "#work");
 initTimelineFill(gsap, ScrollTrigger);
 initScrollProgress(gsap, ScrollTrigger);
