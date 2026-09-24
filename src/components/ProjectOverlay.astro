@@ -1,13 +1,27 @@
 ---
 ---
 <div class="project-overlay" id="projectOverlay" aria-hidden="true" data-lenis-prevent>
-  <button class="project-overlay-close" id="overlayClose" aria-label="Close project detail">Close</button>
+<button class="project-overlay-close" id="overlayClose" aria-label="Close project detail" data-i18n="work.close" data-i18n-direct>Tutup</button>
   <div class="project-overlay-inner">
     <div class="overlay-visual" id="overlayVisual"></div>
     <div class="overlay-content">
       <h3 class="overlay-title" id="overlayTitle"></h3>
       <p class="overlay-desc" id="overlayDesc"></p>
       <div class="overlay-meta" id="overlayMeta"></div>
+      <a
+        class="overlay-link"
+        id="overlayLink"
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+        hidden
+        aria-hidden="true"
+      >
+        <span data-i18n="work.visit" data-i18n-direct>Kunjungi website</span>
+        <svg width="14" height="14" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+          <path d="M1.5 10.5L10.5 1.5M10.5 1.5H4.5M10.5 1.5V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
     </div>
   </div>
 </div>

@@ -2,38 +2,42 @@
 const projects = [
   {
     index: "01",
+    tags: "WEB · GOVERNMENT",
+    label: "DAMKAR",
+    tint: "#1E4FA3",
+    title: "Damkar Provinsi Jawa Barat",
+    desc: "Situs resmi Damkar Provinsi Jawa Barat — informasi publik, peraturan, berita, dan portal data regional.",
+    descEn: "Official website of the West Java Fire & Rescue Service — public information, regulations, news, and regional data portals.",
+    descId: "Situs resmi Damkar Provinsi Jawa Barat — informasi publik, peraturan, berita, dan portal data regional.",
+    descSu: "Situs resmi Damkar Provinsi Jawa Barat — informasi publik, peraturan, berita, sareng portal data regional.",
+    projectIndex: "0",
+    image: "/assets/projects/damkar.jpg",
+  },
+  {
+    index: "02",
     tags: "AI · WEB · MOBILE",
     label: "MATRIAL",
     tint: "#5B8CFF",
     title: "Matrial",
     desc: "AI-powered material marketplace and intelligent construction analysis platform.",
-    projectIndex: "0",
+    projectIndex: "1",
   },
   {
-    index: "02",
+    index: "03",
     tags: "MOBILE · COMMERCE",
     label: "BALANJA",
     tint: "#7A6BFF",
     title: "Balanja Express",
     desc: "Mobile commerce ecosystem connecting customers and drivers in real time.",
-    projectIndex: "1",
+    projectIndex: "2",
   },
   {
-    index: "03",
+    index: "04",
     tags: "WEB · GOVERNMENT",
     label: "BPBD JABAR",
     tint: "#4FA8FF",
     title: "BPBD Jawa Barat",
     desc: "Digital platform for regional disaster management and public coordination.",
-    projectIndex: "2",
-  },
-  {
-    index: "04",
-    tags: "WEB · PUBLIC INFO",
-    label: "DAMKAR",
-    tint: "#5B8CFF",
-    title: "Damkar Jawa Barat",
-    desc: "Emergency response and public information platform for the fire & rescue service.",
     projectIndex: "3",
   },
   {
@@ -68,13 +72,25 @@ const projects = [
           <span class="project-tags">{p.tags}</span>
         </div>
         <div class="project-visual">
-          <div class="project-visual-inner" style={`--tint:${p.tint};`}>
-            <span class="project-visual-label">{p.label}</span>
+          <div
+            class:list={["project-visual-inner", p.image && "has-image"]}
+            style={`--tint:${p.tint};${p.image ? `--project-image:url(${p.image});` : ""}`}
+          >
+            {!p.image && <span class="project-visual-label">{p.label}</span>}
           </div>
         </div>
         <div class="project-info">
           <h3 class="project-title">{p.title}</h3>
-          <p class="project-desc">{p.desc}</p>
+          {p.descEn ? (
+            <p
+              class="project-desc"
+              data-i18n-desc-en={p.descEn}
+              data-i18n-desc-id={p.descId}
+              data-i18n-desc-su={p.descSu}
+            >{p.desc}</p>
+          ) : (
+            <p class="project-desc">{p.desc}</p>
+          )}
         </div>
       </article>
     ))}
